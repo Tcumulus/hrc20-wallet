@@ -64,5 +64,10 @@ module.exports = {
         return truffleProvider;
       },
     },
+  },
+  compilers: {
+    solc: {
+      version: "^0.8.0"
+    }
   }
 };
