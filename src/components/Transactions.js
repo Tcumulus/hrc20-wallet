@@ -19,11 +19,15 @@ const Transactions = ({ transfer, transaction, splitAddress }) => {
         </div>
         <button type="submit" className={`w-full mt-2 shadow-none ${buttonStyle}`}>Send</button>
 
-        { transaction !== null ?
-          <a href={`https://explorer.pops.one/tx/${transaction.hash}`} className="mt-2 mb-1 text-sm text-gray-500 underline"
-          >{`Transaction: ${splitAddress(transaction.hash)}`}</a>
-          : null
-        }
+        
+          { transaction !== null ?
+            <div className="flex w-full justify-start">
+              <a href={`https://explorer.pops.one/tx/${transaction.hash}`} target="_blank" rel="noopener noreferrer"
+                className="mt-2 m-1 text-sm text-gray-500 underline"
+              >{`Transaction: ${splitAddress(transaction.hash)}`}</a>
+            </div>
+            : null
+          }
       </form>
     </div>
   )
