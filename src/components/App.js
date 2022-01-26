@@ -81,8 +81,8 @@ function App() {
   const transfer = async (e) => {
     e.preventDefault()
     if(check()) {
-      let transferAmount = e.target.amount.value * (10 ** decimals)
-      transferAmount = transferAmount.toString()
+      let transferAmount = e.target.amount.value
+      transferAmount = ethers.utils.parseUnits(transferAmount, decimals)
       let receiverAddress = e.target.receiver.value
   
       let txt = await contract.transfer(receiverAddress, transferAmount)

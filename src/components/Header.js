@@ -1,4 +1,5 @@
 import React from "react"
+import { ethers } from "ethers"
 import harmonyLogo from "../images/harmony-one-logo.svg"
 import logo from "../images/logo.png"
 
@@ -6,7 +7,9 @@ const buttonStyle = "mx-3 py-2 px-5 bg-[#f7f7f7] text-gray-700 text-lg rounded-x
 
 const Header = ({ connectWallet, address, chainId, balance, tokenSymbol, splitAddress }) => {
   const roundBalance = (balance, tokenSymbol) => {
-    let _balance = Math.round(balance, 2) + " " + tokenSymbol
+    let _balance = Math.round(balance, 2) 
+    _balance = ethers.utils.commify(_balance)
+    _balance = _balance + " " + tokenSymbol
     return _balance
   }
 
