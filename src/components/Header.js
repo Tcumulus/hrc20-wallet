@@ -7,7 +7,7 @@ const buttonStyle = "mx-3 py-2 px-5 bg-[#f7f7f7] text-gray-700 text-lg rounded-x
 
 const Header = ({ connectWallet, address, chainId, balance, tokenSymbol, splitAddress }) => {
   const roundBalance = (balance, tokenSymbol) => {
-    let _balance = Math.round(balance, 2) 
+    let _balance = Math.round(balance * 100) / 100 
     _balance = ethers.utils.commify(_balance)
     _balance = _balance + " " + tokenSymbol
     return _balance

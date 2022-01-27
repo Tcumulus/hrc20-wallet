@@ -82,11 +82,17 @@ function App() {
     e.preventDefault()
     if(check()) {
       let transferAmount = e.target.amount.value
-      transferAmount = ethers.utils.parseUnits(transferAmount, decimals)
-      let receiverAddress = e.target.receiver.value
-  
-      let txt = await contract.transfer(receiverAddress, transferAmount)
-      setTransaction(txt)
+      if (transferAmount <= balance && transferAmount > 0) {
+        let _transferAmount = ethers.utils.parseUnits(transferAmount, decimals)
+        let receiverAddress = e.target.receiver.value
+    
+        let txt = await contract.transfer(receiverAddress, _transferAmount)
+        setTransaction(txt)
+        setBalance(balance - transferAmount)
+      }
+      else {
+        alert("Balance insufficient")
+      }
     }
   }
 
@@ -100,7 +106,7 @@ function App() {
       <Header connectWallet={connectWallet} address={address} chainId={chainId} 
         balance={balance} tokenSymbol={tokenSymbol} splitAddress={splitAddress}
       />
-      <Transactions transfer={transfer} transaction={transaction} splitAddress={splitAddress}/>
+      <Transactions transfer={transfer} transaction={transaction} splitAddress={splitAddress} balance={balance}/>
       <div className="flex flex-grow items-end justify-end">
         <p className="text-sm text-[#f7f7f7] m-2">{`TST: ${contractAddress}`}</p>
       </div>
