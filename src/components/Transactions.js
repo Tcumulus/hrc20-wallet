@@ -24,7 +24,7 @@ const Transactions = ({ transfer, transaction, splitAddress, balance }) => {
             className="w-full p-2 text-3xl text-gray-700 bg-[#f7f7f7] focus:outline-none"
           />
           <button onClick={maxInput} type="button"
-            className={`h-10 px-3 bg-[#f494f6] hover:bg-[#f67fef] ${buttonStyle}`}
+            className={`h-10 px-3 bg-gray-300 hover:bg-gray-400 shadow-none ${buttonStyle}`}
           >
             max
           </button>
@@ -32,7 +32,7 @@ const Transactions = ({ transfer, transaction, splitAddress, balance }) => {
         <input id="receiver" type="text" placeholder="receiver address" 
           className="w-full h-1/3 m-2 p-2 text-xl text-gray-700 bg-[#f7f7f7] rounded-xl border-2 focus:outline-none"
         />
-        <button type="submit" className={`w-full mt-2 shadow-none ${buttonStyle}`}>Send</button>
+        <button type="submit" className={`w-full shadow-none ${buttonStyle}`}>Send</button>
 
         { transaction !== null ?
           <div className="flex w-full justify-start">
